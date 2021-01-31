@@ -1,0 +1,59 @@
+﻿@model RentAMovie.ViewModels.CustomerFormViewModel
+@{
+    ViewBag.Title = "CustomerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    if (@Model.Customer == null)
+    {
+        <h2> New Customer</h2>
+    }
+    else
+    {
+        <h2> Edit Customer</h2>
+    }
+}
+
+@using (Html.BeginForm("Save", "Customer"))
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.Name)
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(m => m.Customer.MembershipTypeId)*@
+        <label for="MembershipTypeId">Membership Type</label>
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(m => m.BirthDate)*@
+        <label for="BirthDate">Date of Birth</label>
+        @Html.TextBoxFor(m => m.Customer.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.BirthDate)
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed to Newsletter?
+        </label>
+    </div>
+
+    @Html.HiddenFor(m => m.Customer.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+@* This section is used to ensure clientside validation for standard data annotations *@ 
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,86 @@
+﻿@model RentAMovie.ViewModels.MoviesViewModel
+@{
+    ViewBag.Title = "MoviesReadOnly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+
+@if (Model.Movies.Count == 0)
+{
+    <text> No movies present in DB</text>
+}
+else
+{
+    <table id="movies" class="table table-sm table-striped table-hover border-bottom">
+        <thead>
+            <tr>
+                <th>Movie ID</th>
+                <th>Movie Name</th>
+                <th>Genre</th>
+                <th>Date Released</th>
+                <th>Date Added</th>
+                <th>Quantity in Stock</th>
+            </tr>
+        </thead>
+
+        @*
+            @foreach (var movie in Model.Movies)
+            {
+                <tr>
+                    <td>@movie.Id</td>
+                    <td>@Html.ActionLink(movie.Name, "New", new { movie.Id })</td>
+                    <td>@movie.GenreType.Name</td>
+                    <td>@movie.ReleaseDate.ToLongDateString()</td>
+                    <td>@movie.DateAdded.ToLongDateString()</td>
+                    <td>@movie.QuantityInStock</td>
+                </tr>
+            } *@
+    </table>
+}
+
+
+@using (Html.BeginForm("New", "Movies"))
+{
+    <button type="submit" class="btn btn-primary">Add</button>
+}
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            var table = $("#movies").DataTable({
+                ajax: {
+                    url: "api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "id"
+                    },
+                    {
+                        data: "name",
+                        render: function (data, type, movie) {
+                            return "<a href='/Movies/New/" + movie.id + "'>" + movie.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "genreType.name"
+                    },
+                    {
+                        data: "releaseDate",
+                       
+                    },
+                    {
+                        data: "dateAdded"
+                    },
+                    {
+                        data: "quantityInStock"
+                    }
+                ]
+                            
+            });
+        });
+    </script>
+}

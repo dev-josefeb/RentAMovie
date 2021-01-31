@@ -1,0 +1,18 @@
+﻿@model RentAMovie.Models.Customer
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details</h2>
+<h5><b>Customer Name: </b> @Model.Name </h5>
+<h5><b>Customer ID: </b> @Model.Id </h5>
+<h5><b>Membership Type: </b>@Model.MembershipType.Name</h5>
+
+@{
+    if (Model.BirthDate != null)
+    {
+        <h5><b>Birthdate: </b>@Model.BirthDate.Value.ToLongDateString()</h5>
+    }
+}
+
