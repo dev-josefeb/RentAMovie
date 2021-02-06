@@ -35,16 +35,7 @@
         @Html.ValidationMessageFor(m => m.Movie.DateAdded)
     </div>
 
-    <!--<div class="form-group">-->
-    @*@Html.LabelFor(m => m.Customer.MembershipTypeId)*@
-    <!--<label for="GenreType">Genre Type</label>
-        @Html.DropDownListFor(m => m.Movie.GenreType.Id, new SelectList(Model.GenreTypes,"Id","Name"), "Select Genre", new { @class = "form-control" })
-    </div>-->
-
-    @*<div class="form-group">
-            @Html.LabelFor(m => m.Movie.GenreType)
-            @Html.DropDownListFor(m => m.Movie.GenreType, new SelectList(Model.GenreTypes, "Id", "Name"), "Select Genre", new { @class = "form-control" })
-        </div>*@
+    @Html.DropDownListFor(m => m.Movie.GenreType.Id, new SelectList(Model.GenreTypes, "Id", "Name"), "Select Genre", new { @class = "form-control" })
 
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.GenreTypeId)
@@ -52,11 +43,6 @@
         @Html.ValidationMessageFor(m => m.Movie.GenreTypeId)
     </div>
 
-
-    @*<div class="form-group">
-            @Html.LabelFor(m => m.GenreOld)
-            @Html.TextBoxFor(m => m.GenreOld, new { @class = "form-control" })
-        </div>*@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.QuantityInStock)

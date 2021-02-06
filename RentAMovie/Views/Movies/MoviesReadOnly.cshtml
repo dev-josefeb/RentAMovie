@@ -23,19 +23,6 @@ else
                 <th>Quantity in Stock</th>
             </tr>
         </thead>
-
-        @*
-            @foreach (var movie in Model.Movies)
-            {
-                <tr>
-                    <td>@movie.Id</td>
-                    <td>@Html.ActionLink(movie.Name, "New", new { movie.Id })</td>
-                    <td>@movie.GenreType.Name</td>
-                    <td>@movie.ReleaseDate.ToLongDateString()</td>
-                    <td>@movie.DateAdded.ToLongDateString()</td>
-                    <td>@movie.QuantityInStock</td>
-                </tr>
-            } *@
     </table>
 }
 

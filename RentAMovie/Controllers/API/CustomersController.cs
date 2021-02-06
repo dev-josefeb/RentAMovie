@@ -43,10 +43,8 @@ namespace RentAMovie.Controllers.API
 
             if (customer == null)
                 return NotFound();
-            //throw new HttpResponseException(HttpStatusCode.NotFound);
 
             return Ok(Mapper.Map<Customer, CustomerDto>(customer));
-            //return Mapper.Map<Customer,CustomerDto>(customer);
         }
 
         //POST /api/customers
@@ -55,7 +53,6 @@ namespace RentAMovie.Controllers.API
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-                /*throw new HttpResponseException(HttpStatusCode.BadRequest)*/
 
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _context.Customers.Add(customer);
@@ -77,11 +74,6 @@ namespace RentAMovie.Controllers.API
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             Mapper.Map<CustomerDto, Customer>(customerDto, customerInDb);
-            //customerInDb.Name = customerDto.Name;
-            //customerInDb.BirthDate = customerDto.BirthDate;
-            //customerInDb.IsSubscribedToNewsletter = customerDto.IsSubscribedToNewsletter;
-            //customerInDb.MembershipType = customerDto.MembershipType;
-
             _context.SaveChanges();
         }
 
