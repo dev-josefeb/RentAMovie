@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using RentAMovie.Dtos;
 using RentAMovie.Models;
@@ -39,7 +36,6 @@ namespace RentAMovie.Controllers.API
 
                 movie.QuantityAvailable--;
 
-                //movies.Add(_context.Movies.Add(_context.Movies.SingleOrDefault(m => m.Id == movieId)));
                 Rental rental = new Rental
                 {
                     Customer = customer,

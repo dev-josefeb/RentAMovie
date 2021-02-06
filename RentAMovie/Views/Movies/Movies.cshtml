@@ -25,18 +25,17 @@ else
             </tr>
         </thead>
 
-        
-            @foreach (var movie in Model.Movies)
-            {
-                <tr>
-                    <td>@movie.Id</td>
-                    <td>@Html.ActionLink(movie.Name, "New", new { movie.Id })</td>
-                    <td>@movie.GenreType.Name</td>
-                    <td>@movie.ReleaseDate.ToLongDateString()</td>
-                    <td>@movie.DateAdded.ToLongDateString()</td>
-                    <td>@movie.QuantityInStock</td>
-                </tr>
-            } 
+        @foreach (var movie in Model.Movies)
+        {
+            <tr>
+                <td>@movie.Id</td>
+                <td>@Html.ActionLink(movie.Name, "New", new { movie.Id })</td>
+                <td>@movie.GenreType.Name</td>
+                <td>@movie.ReleaseDate.ToLongDateString()</td>
+                <td>@movie.DateAdded.ToLongDateString()</td>
+                <td>@movie.QuantityInStock</td>
+            </tr>
+        }
     </table>
 }
 
@@ -49,7 +48,7 @@ else
 @section scripts
 {
     <script>
-        
+
         $(document).ready(function () {
             var table = $("#movies").DataTable({
                 ajax: {
@@ -97,7 +96,6 @@ else
                             method: "DELETE",
                             success: function () {
                                 console.log("successfully deleted movie");
-                                //button.parents("tr").remove();
                                 table.row(button.parents("tr")).remove().draw();
                             }
                         });

@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using RentAMovie.Dtos;
 using RentAMovie.Models;
@@ -45,10 +43,8 @@ namespace RentAMovie.Controllers.API
 
             if (movie == null)
                 return NotFound();
-            //throw new HttpResponseException(HttpStatusCode.NotFound);
 
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
-            //return Mapper.Map<Movie,MovieDto>(movie);
         }
 
         //POST /api/movies
@@ -57,7 +53,6 @@ namespace RentAMovie.Controllers.API
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-            /*throw new HttpResponseException(HttpStatusCode.BadRequest)*/
 
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
             _context.Movies.Add(movie);
@@ -79,12 +74,6 @@ namespace RentAMovie.Controllers.API
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             Mapper.Map<MovieDto, Movie>(movieDto, movieInDb);
-            //movieInDb.Name = movieDto.Name;
-            //movieInDb.DateAdded = movieDto.DateAdded;
-            //movieInDb.ReleaseDate = movieDto.ReleaseDate;
-            //movieInDb.GenreTypeId = movieDto.GenreTypeId;
-            //movieInDb.QuantityInStock = movieDto.QuantityInStock;
-
             _context.SaveChanges();
         }
 

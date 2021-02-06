@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using RentAMovie.Models;
 using RentAMovie.ViewModels;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 
 namespace RentAMovie.Controllers
 {
@@ -17,7 +16,6 @@ namespace RentAMovie.Controllers
 
         public MoviesController()
         {
-            //GetMovies();
             _context = new ApplicationDbContext();
             _movies = GetMovies();
         }
@@ -40,17 +38,11 @@ namespace RentAMovie.Controllers
             };
           
             return View(viewModel);
-            
-             
-            ////return Content("Bananas for sale people!!!!!!");
-            ////return HttpNotFound();
-            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "Name" });
         }
 
         [Route("Movies")]
         public ActionResult Movies()
         {
-            //return View(new MoviesViewModel { Movies = _movies.ToList()});
             if (User.IsInRole(RoleName.CanManageMovies))
                 return View("Movies", new MoviesViewModel { Movies = _movies.ToList() });
             else
@@ -118,12 +110,6 @@ namespace RentAMovie.Controllers
                 movieInDb.QuantityInStock = movie.QuantityInStock;
             }
             
- 
-            //if (movie.Id == 0)
-            //    _context.Movies.Add(movie);
-
-            //var movie = _context.Movies.Single(m => m.Id == id);
-            //return View("MoviesForm", movie);
             return RedirectToAction("Movies", "Movies");
         }
 
@@ -136,7 +122,6 @@ namespace RentAMovie.Controllers
         private List<Movie> GetMovies()
         {
             return _context.Movies.Include(m => m.GenreType).ToList();
-            //_movies = new List<Movie> { new Movie { Id = 0, Name = "Wall-E" }, new Movie { Id = 1, Name = "Tarzan" } };
         }
     }
 }
