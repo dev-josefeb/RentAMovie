@@ -2,31 +2,272 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
 
-<div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    html, body {
+      margin: 0;
+      background: white;
+      font-family: "Montserrat", helvetica, arial, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .link {
+      display: block;
+      text-align: center;
+      color: #777;
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    .movie_card {
+      position: relative;
+      display: block;
+      width: 800px;
+      height: 350px;
+      margin: 10px auto;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: all 0.4s;
+      box-shadow: 0px 0px 120px -25px rgba(0, 0, 0, 0.5);
+    }
+    .movie_card:hover {
+      transform: scale(1.02);
+      box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s;
+    }
+   .movie_card .info_section {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      border-radius: 10px;
+    }
+    .movie_card .info_section .movie_header {
+      position: relative;
+      padding: 25px;
+      height: 40%;
+    }
+    .movie_card .info_section .movie_header h1 {
+      color: black;
+      font-weight: 400;
+    }
+    .movie_card .info_section .movie_header h4 {
+      color: #555;
+      font-weight: 400;
+    }
+    .movie_card .info_section .movie_header .minutes {
+      display: inline-block;
+      margin-top: 15px;
+      color: #555;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .movie_card .info_section .movie_header .type {
+      display: inline-block;
+      color: #959595;
+      margin-left: 10px;
+    }
+    .movie_card .info_section .movie_header .locandina {
+      position: relative;
+      float: left;
+      margin-right: 20px;
+      height: 120px;
+      box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+    }
+    .movie_card .info_section .movie_desc {
+      padding: 25px;
+      height: 50%;
+    }
+   .movie_card .info_section .movie_desc .text {
+      color: #545454;
+    }
+    .movie_card .info_section .movie_social {
+      height: 10%;
+      padding-left: 15px;
+      padding-bottom: 20px;
+    }
+    .movie_card .info_section .movie_social ul {
+      list-style: none;
+      padding: 0;
+    }
+    .movie_card .info_section .movie_social ul li {
+      display: inline-block;
+      color: rgba(0, 0, 0, 0.3);
+      transition: color 0.3s;
+      transition-delay: 0.15s;
+      margin: 0 10px;
+    }
+    .movie_card .info_section .movie_social ul li:hover {
+      transition: color 0.3s;
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .movie_card .info_section .movie_social ul li i {
+      font-size: 19px;
+      cursor: pointer;
+    }
+    .movie_card .blur_back {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      height: 100%;
+      right: 0;
+      background-size: cover;
+      border-radius: 11px;
+    }
+        
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4,1fr);
+        grid-gap:2rem;
+      
+    }
+
+</style>
+
+<h3>Rentals trending now</h3>
+<div class="wrapper">
+
+    <div class="movie_card" id="bright">
+        <div class="info_section">
+            <div class="movie_header">
+                <img class="locandina" src="https://movieplayer.net-cdn.it/t/images/2017/12/20/bright_jpg_191x283_crop_q85.jpg" />
+                <h1>Bright</h1>
+                <h4>2017, David Ayer</h4>
+                <span class="minutes">117 min</span>
+                <p class="type">Action, Crime, Fantasy</p>
+            </div>
+            <div class="movie_desc">
+                <p class="text">
+                    Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for.
+                </p>
+            </div>
+            <div class="movie_social">
+                <ul>
+                    <li><i class="material-icons">share</i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="blur_back bright_back"></div>
     </div>
 
-<div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="movie_card" id="tomb">
+        <div class="info_section">
+            <div class="movie_header">
+                <img class="locandina" src="https://mr.comingsoon.it/imgdb/locandine/235x336/53750.jpg" />
+                <h1>Tomb Raider</h1>
+                <h4>2018, Roar Uthaug</h4>
+                <span class="minutes">125 min</span>
+                <p class="type">Action, Fantasy</p>
+            </div>
+            <div class="movie_desc">
+                <p class="text">
+                    Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.
+                </p>
+            </div>
+            <div class="movie_social">
+                <ul>
+                    <li><i class="material-icons">share</i></li>
+                </ul>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
+        <div class="blur_back tomb_back"></div>
     </div>
+
+    <div class="movie_card" id="ave">
+        <div class="info_section">
+            <div class="movie_header">
+                <img class="locandina" src="https://mr.comingsoon.it/imgdb/locandine/235x336/53715.jpg" />
+                <h1>Black Panther</h1>
+                <h4>2018, Ryan Coogler</h4>
+                <span class="minutes">134 min</span>
+                <p class="type">Action, Adventure, Sci-Fi</p>
+            </div>
+            <div class="movie_desc">
+                <p class="text">
+                    T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.
+                </p>
+            </div>
+            <div class="movie_social">
+                <ul>
+                    <li><i class="material-icons">share</i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="blur_back ave_back"></div>
+    </div>
+
+    <div class="movie_card" id="bright">
+        <div class="info_section">
+            <div class="movie_header">
+                <img class="locandina" src="https://mr.comingsoon.it/imgdb/locandine/235x336/56352.jpg" />
+                <h1>No Time to Die</h1>
+                <h4>2021, Daniel Craig</h4>
+                <span class="minutes">121 min</span>
+                <p class="type">Action, Crime, Spy</p>
+            </div>
+            <div class="movie_desc">
+                <p class="text">
+                    No Time To Die , a film directed by Cary Fukunaga, tells how the retired 007 agent James Bond ( Daniel Craig ) lives a quiet existence in Jamaica, far from the adventures and dangers that have surrounded his career since indicator light.
+                </p>
+            </div>
+            <div class="movie_social">
+                <ul>
+                    <li><i class="material-icons">share</i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="blur_back bright_back"></div>
+    </div>
+
+    <div class="movie_card" id="tomb">
+        <div class="info_section">
+            <div class="movie_header">
+                <img class="locandina" src="https://mr.comingsoon.it/imgdb/locandine/235x336/56674.jpg" />
+                <h1>Fast and Furious 9</h1>
+                <h4>2020, Vin Diesel</h4>
+                <span class="minutes">132 min</span>
+                <p class="type">Action, Comedy</p>
+            </div>
+            <div class="movie_desc">
+                <p class="text">
+                    Fast and Furious 9 , the film directed by Justin Lin, is the ninth installment of the Fast and Furious action franchise.
+                    Of the plot of the film, of which the details are not yet known, we know that Vin Diesel will play the role of Dominic Toretto while Dwayne Johnson will no longer be part of the cast due to a now open conflict with the actor Diesel.
+                </p>
+            </div>
+            <div class="movie_social">
+                <ul>
+                    <li><i class="material-icons">share</i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="blur_back tomb_back"></div>
+    </div>
+
+    <div class="movie_card" id="ave">
+        <div class="info_section">
+            <div class="movie_header">
+                <img class="locandina" src="https://mr.comingsoon.it/imgdb/locandine/235x336/56511.jpg" />
+                <h1>Tenet</h1>
+                <h4>209, John David</h4>
+                <span class="minutes">149 min</span>
+                <p class="type">Action, Adventure, Sci-Fi</p>
+            </div>
+            <div class="movie_desc">
+                <p class="text">
+                    Tenet , the film directed by Christopher Nolan, is set in the world of international espionage, where nations come together, regardless of their interests, to solve an enigmatic intrigue. The Protagonist ( John David Washington ), a well-trained and highly sensitive agent, is assigned an important task: to stop what could turn out to be a planetary apocalypse, a threat worse than Armageddon.
+                </p>
+            </div>
+            <div class="movie_social">
+                <ul>
+                    <li><i class="material-icons">share</i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="blur_back ave_back"></div>
+    </div>
+
+</div>
+
