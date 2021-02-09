@@ -22,7 +22,7 @@ else
                 <th>Date Added</th>
                 <th>Quantity in Stock</th>
             </tr>
-        </thead>
+        </thead>    
     </table>
 }
 
@@ -57,7 +57,7 @@ else
                     },
                     {
                         data: "releaseDate",
-                       
+
                     },
                     {
                         data: "dateAdded"
@@ -66,7 +66,21 @@ else
                         data: "quantityInStock"
                     }
                 ]
-                            
+                ,
+                columnDefs: [
+                    {
+                        "render": function (data, type, row) {
+                            const options = {
+                                weekday: 'long',
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            };
+                            return new Date(data).toLocaleString("en", options);
+                        },
+                        "targets": [3, 4]
+                    }
+                ]
             });
         });
     </script>
